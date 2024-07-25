@@ -1,0 +1,64 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leaves",
+  "info": {
+    "singularName": "leave",
+    "pluralName": "leaves",
+    "displayName": "Leave"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "from": {
+      "type": "datetime",
+      "required": true
+    },
+    "to": {
+      "type": "datetime",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "annual",
+        "halfDay",
+        "sick",
+        "excuse",
+        "maternity",
+        "paternity",
+        "compassionate"
+      ],
+      "required": true
+    },
+    "attachments": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "submitted_at": {
+      "type": "datetime",
+      "required": true
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "leaves"
+    },
+    "submitted_by": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "plugin::users-permissions.user"
+    },
+    "advance_payment": {
+      "type": "boolean",
+      "default": false,
+      "required": true
+    }
+  }
+}
