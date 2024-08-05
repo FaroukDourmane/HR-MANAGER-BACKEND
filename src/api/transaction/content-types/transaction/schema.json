@@ -1,0 +1,49 @@
+{
+  "kind": "collectionType",
+  "collectionName": "transactions",
+  "info": {
+    "singularName": "transaction",
+    "pluralName": "transactions",
+    "displayName": "transaction"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "transactions"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "addition",
+        "deduction"
+      ],
+      "required": true
+    },
+    "amount": {
+      "type": "float",
+      "required": true,
+      "min": 1
+    },
+    "effective": {
+      "type": "date",
+      "required": true
+    },
+    "attachments": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": true
+    },
+    "comment": {
+      "type": "text"
+    }
+  }
+}

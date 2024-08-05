@@ -1,0 +1,9 @@
+{
+  "collectionName": "components_user_salaries",
+  "info": {
+    "displayName": "salary",
+    "icon": "command"
+  },
+  "options": {},
+  "attributes": {}
+}

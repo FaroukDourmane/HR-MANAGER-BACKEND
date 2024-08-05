@@ -368,6 +368,7 @@ export interface ApiLeaveLeave extends Schema.CollectionType {
     singularName: 'leave';
     pluralName: 'leaves';
     displayName: 'Leave';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -402,6 +403,7 @@ export interface ApiLeaveLeave extends Schema.CollectionType {
     advance_payment: Attribute.Boolean &
       Attribute.Required &
       Attribute.DefaultTo<false>;
+    comment: Attribute.Text;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -412,6 +414,51 @@ export interface ApiLeaveLeave extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::leave.leave',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTransactionTransaction extends Schema.CollectionType {
+  collectionName: 'transactions';
+  info: {
+    singularName: 'transaction';
+    pluralName: 'transactions';
+    displayName: 'transaction';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::transaction.transaction',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    type: Attribute.Enumeration<['addition', 'deduction']> & Attribute.Required;
+    amount: Attribute.Float &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    effective: Attribute.Date & Attribute.Required;
+    attachments: Attribute.Media;
+    comment: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::transaction.transaction',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::transaction.transaction',
       'oneToOne',
       'admin::user'
     > &
@@ -799,7 +846,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
   options: {
     draftAndPublish: false;
-    timestamps: true;
   };
   attributes: {
     username: Attribute.String &
@@ -833,6 +879,15 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::leave.leave'
     >;
+    salary: Attribute.Component<'user.salary'>;
+    transactions: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::transaction.transaction'
+    >;
+    firstname: Attribute.String & Attribute.Required;
+    lastname: Attribute.String & Attribute.Required;
+    middlename: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -861,6 +916,7 @@ declare module '@strapi/types' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'api::leave.leave': ApiLeaveLeave;
+      'api::transaction.transaction': ApiTransactionTransaction;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;

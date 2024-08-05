@@ -9,8 +9,7 @@
     "displayName": "User"
   },
   "options": {
-    "draftAndPublish": false,
-    "timestamps": true
+    "draftAndPublish": false
   },
   "attributes": {
     "username": {
@@ -71,6 +70,29 @@
       "relation": "oneToMany",
       "target": "api::leave.leave",
       "mappedBy": "user"
+    },
+    "salary": {
+      "displayName": "salary",
+      "type": "component",
+      "repeatable": false,
+      "component": "user.salary"
+    },
+    "transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::transaction.transaction",
+      "mappedBy": "user"
+    },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "middlename": {
+      "type": "string"
     }
   }
 }
