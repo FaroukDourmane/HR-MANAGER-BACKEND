@@ -5,8 +5,50 @@ export interface UserSalary extends Schema.Component {
   info: {
     displayName: 'salary';
     icon: 'command';
+    description: '';
   };
-  attributes: {};
+  attributes: {
+    basic: Attribute.Float &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    housing: Attribute.Float &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    transportation: Attribute.Float &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    mobile: Attribute.Float &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+    other: Attribute.Float &
+      Attribute.SetMinMax<
+        {
+          min: 0;
+        },
+        number
+      > &
+      Attribute.DefaultTo<0>;
+  };
 }
 
 declare module '@strapi/types' {

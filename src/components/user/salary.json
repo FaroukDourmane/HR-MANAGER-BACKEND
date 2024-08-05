@@ -2,8 +2,35 @@
   "collectionName": "components_user_salaries",
   "info": {
     "displayName": "salary",
-    "icon": "command"
+    "icon": "command",
+    "description": ""
   },
   "options": {},
-  "attributes": {}
+  "attributes": {
+    "basic": {
+      "type": "float",
+      "required": true,
+      "min": 1
+    },
+    "housing": {
+      "type": "float",
+      "min": 0,
+      "default": 0
+    },
+    "transportation": {
+      "type": "float",
+      "default": 0,
+      "min": 0
+    },
+    "mobile": {
+      "type": "float",
+      "min": 0,
+      "default": 0
+    },
+    "other": {
+      "type": "float",
+      "min": 0,
+      "default": 0
+    }
+  }
 }
