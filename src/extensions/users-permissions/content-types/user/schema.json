@@ -93,6 +93,16 @@
     },
     "middlename": {
       "type": "string"
+    },
+    "personal": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user.personal"
+    },
+    "documents": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::document.document"
     }
   }
 }

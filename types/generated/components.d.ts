@@ -1,5 +1,20 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface UserPersonal extends Schema.Component {
+  collectionName: 'components_user_personals';
+  info: {
+    displayName: 'Personal';
+  };
+  attributes: {
+    birthday: Attribute.Date;
+    gender: Attribute.Enumeration<['male', 'female']>;
+    picture: Attribute.Media;
+    personal_email: Attribute.Email;
+    nationality: Attribute.String;
+    mobile: Attribute.String;
+  };
+}
+
 export interface UserSalary extends Schema.Component {
   collectionName: 'components_user_salaries';
   info: {
@@ -54,6 +69,7 @@ export interface UserSalary extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'user.personal': UserPersonal;
       'user.salary': UserSalary;
     }
   }

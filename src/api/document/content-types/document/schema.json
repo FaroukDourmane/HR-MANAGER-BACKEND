@@ -1,0 +1,42 @@
+{
+  "kind": "collectionType",
+  "collectionName": "documents",
+  "info": {
+    "singularName": "document",
+    "pluralName": "documents",
+    "displayName": "Document"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "passport",
+        "national_id",
+        "insurance",
+        "driving_license",
+        "military_certificate",
+        "birth_certificate",
+        "residence_visa",
+        "business_visa",
+        "work_permit",
+        "other"
+      ],
+      "required": true
+    },
+    "other_type": {
+      "type": "string"
+    },
+    "files": {
+      "allowedTypes": [
+        "images",
+        "files"
+      ],
+      "type": "media",
+      "multiple": true
+    }
+  }
+}

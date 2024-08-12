@@ -362,6 +362,51 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
+export interface ApiDocumentDocument extends Schema.CollectionType {
+  collectionName: 'documents';
+  info: {
+    singularName: 'document';
+    pluralName: 'documents';
+    displayName: 'Document';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    type: Attribute.Enumeration<
+      [
+        'passport',
+        'national_id',
+        'insurance',
+        'driving_license',
+        'military_certificate',
+        'birth_certificate',
+        'residence_visa',
+        'business_visa',
+        'work_permit',
+        'other'
+      ]
+    > &
+      Attribute.Required;
+    other_type: Attribute.String;
+    files: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::document.document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::document.document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLeaveLeave extends Schema.CollectionType {
   collectionName: 'leaves';
   info: {
@@ -888,6 +933,12 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
     firstname: Attribute.String & Attribute.Required;
     lastname: Attribute.String & Attribute.Required;
     middlename: Attribute.String;
+    personal: Attribute.Component<'user.personal'>;
+    documents: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::document.document'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -915,6 +966,7 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
+      'api::document.document': ApiDocumentDocument;
       'api::leave.leave': ApiLeaveLeave;
       'api::transaction.transaction': ApiTransactionTransaction;
       'plugin::upload.file': PluginUploadFile;
