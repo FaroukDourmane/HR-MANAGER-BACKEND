@@ -1,5 +1,27 @@
 import type { Schema, Attribute } from '@strapi/strapi';
 
+export interface UserJob extends Schema.Component {
+  collectionName: 'components_user_jobs';
+  info: {
+    displayName: 'Job';
+    description: '';
+  };
+  attributes: {
+    job_title: Attribute.String & Attribute.Required;
+    department: Attribute.Relation<
+      'user.job',
+      'oneToOne',
+      'api::department.department'
+    >;
+    grade: Attribute.Integer;
+    employment_type: Attribute.Enumeration<
+      ['full-time', 'part-time', 'temporary', 'intern']
+    >;
+    hire_date: Attribute.Date & Attribute.Required;
+    hire_end: Attribute.Date;
+  };
+}
+
 export interface UserPersonal extends Schema.Component {
   collectionName: 'components_user_personals';
   info: {
@@ -69,6 +91,7 @@ export interface UserSalary extends Schema.Component {
 declare module '@strapi/types' {
   export module Shared {
     export interface Components {
+      'user.job': UserJob;
       'user.personal': UserPersonal;
       'user.salary': UserSalary;
     }

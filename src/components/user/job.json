@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_user_jobs",
+  "info": {
+    "displayName": "Job",
+    "description": ""
+  },
+  "options": {},
+  "attributes": {
+    "job_title": {
+      "type": "string",
+      "required": true
+    },
+    "department": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::department.department"
+    },
+    "grade": {
+      "type": "integer"
+    },
+    "employment_type": {
+      "type": "enumeration",
+      "enum": [
+        "full-time",
+        "part-time",
+        "temporary",
+        "intern"
+      ]
+    },
+    "hire_date": {
+      "type": "date",
+      "required": true
+    },
+    "hire_end": {
+      "type": "date"
+    }
+  }
+}

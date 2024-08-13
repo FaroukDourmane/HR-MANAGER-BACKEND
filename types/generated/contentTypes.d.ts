@@ -362,155 +362,6 @@ export interface AdminTransferTokenPermission extends Schema.CollectionType {
   };
 }
 
-export interface ApiDocumentDocument extends Schema.CollectionType {
-  collectionName: 'documents';
-  info: {
-    singularName: 'document';
-    pluralName: 'documents';
-    displayName: 'Document';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    type: Attribute.Enumeration<
-      [
-        'passport',
-        'national_id',
-        'insurance',
-        'driving_license',
-        'military_certificate',
-        'birth_certificate',
-        'residence_visa',
-        'business_visa',
-        'work_permit',
-        'other'
-      ]
-    > &
-      Attribute.Required;
-    other_type: Attribute.String;
-    files: Attribute.Media;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::document.document',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::document.document',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiLeaveLeave extends Schema.CollectionType {
-  collectionName: 'leaves';
-  info: {
-    singularName: 'leave';
-    pluralName: 'leaves';
-    displayName: 'Leave';
-    description: '';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    from: Attribute.DateTime & Attribute.Required;
-    to: Attribute.DateTime & Attribute.Required;
-    type: Attribute.Enumeration<
-      [
-        'annual',
-        'halfDay',
-        'sick',
-        'excuse',
-        'maternity',
-        'paternity',
-        'compassionate'
-      ]
-    > &
-      Attribute.Required;
-    attachments: Attribute.Media;
-    submitted_at: Attribute.DateTime & Attribute.Required;
-    user: Attribute.Relation<
-      'api::leave.leave',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    submitted_by: Attribute.Relation<
-      'api::leave.leave',
-      'oneToOne',
-      'plugin::users-permissions.user'
-    >;
-    advance_payment: Attribute.Boolean &
-      Attribute.Required &
-      Attribute.DefaultTo<false>;
-    comment: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::leave.leave',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::leave.leave',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
-export interface ApiTransactionTransaction extends Schema.CollectionType {
-  collectionName: 'transactions';
-  info: {
-    singularName: 'transaction';
-    pluralName: 'transactions';
-    displayName: 'transaction';
-  };
-  options: {
-    draftAndPublish: false;
-  };
-  attributes: {
-    user: Attribute.Relation<
-      'api::transaction.transaction',
-      'manyToOne',
-      'plugin::users-permissions.user'
-    >;
-    type: Attribute.Enumeration<['addition', 'deduction']> & Attribute.Required;
-    amount: Attribute.Float &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
-    effective: Attribute.Date & Attribute.Required;
-    attachments: Attribute.Media;
-    comment: Attribute.Text;
-    createdAt: Attribute.DateTime;
-    updatedAt: Attribute.DateTime;
-    createdBy: Attribute.Relation<
-      'api::transaction.transaction',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-    updatedBy: Attribute.Relation<
-      'api::transaction.transaction',
-      'oneToOne',
-      'admin::user'
-    > &
-      Attribute.Private;
-  };
-}
-
 export interface PluginUploadFile extends Schema.CollectionType {
   collectionName: 'files';
   info: {
@@ -956,6 +807,216 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiDepartmentDepartment extends Schema.CollectionType {
+  collectionName: 'departments';
+  info: {
+    singularName: 'department';
+    pluralName: 'departments';
+    displayName: 'Department';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    description: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::department.department',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::department.department',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiDocumentDocument extends Schema.CollectionType {
+  collectionName: 'documents';
+  info: {
+    singularName: 'document';
+    pluralName: 'documents';
+    displayName: 'Document';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    type: Attribute.Enumeration<
+      [
+        'passport',
+        'national_id',
+        'insurance',
+        'driving_license',
+        'military_certificate',
+        'birth_certificate',
+        'residence_visa',
+        'business_visa',
+        'work_permit',
+        'other'
+      ]
+    > &
+      Attribute.Required;
+    other_type: Attribute.String;
+    files: Attribute.Media;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::document.document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::document.document',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLeaveLeave extends Schema.CollectionType {
+  collectionName: 'leaves';
+  info: {
+    singularName: 'leave';
+    pluralName: 'leaves';
+    displayName: 'Leave';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    from: Attribute.DateTime & Attribute.Required;
+    to: Attribute.DateTime & Attribute.Required;
+    type: Attribute.Enumeration<
+      [
+        'annual',
+        'halfDay',
+        'sick',
+        'excuse',
+        'maternity',
+        'paternity',
+        'compassionate'
+      ]
+    > &
+      Attribute.Required;
+    attachments: Attribute.Media;
+    submitted_at: Attribute.DateTime & Attribute.Required;
+    user: Attribute.Relation<
+      'api::leave.leave',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    submitted_by: Attribute.Relation<
+      'api::leave.leave',
+      'oneToOne',
+      'plugin::users-permissions.user'
+    >;
+    advance_payment: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<false>;
+    comment: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::leave.leave',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::leave.leave',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiShiftShift extends Schema.CollectionType {
+  collectionName: 'shifts';
+  info: {
+    singularName: 'shift';
+    pluralName: 'shifts';
+    displayName: 'Shift';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    start_time: Attribute.Time & Attribute.Required;
+    end_time: Attribute.Time;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::shift.shift',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::shift.shift',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiTransactionTransaction extends Schema.CollectionType {
+  collectionName: 'transactions';
+  info: {
+    singularName: 'transaction';
+    pluralName: 'transactions';
+    displayName: 'transaction';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::transaction.transaction',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    type: Attribute.Enumeration<['addition', 'deduction']> & Attribute.Required;
+    amount: Attribute.Float &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    effective: Attribute.Date & Attribute.Required;
+    attachments: Attribute.Media;
+    comment: Attribute.Text;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::transaction.transaction',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::transaction.transaction',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 declare module '@strapi/types' {
   export module Shared {
     export interface ContentTypes {
@@ -966,9 +1027,6 @@ declare module '@strapi/types' {
       'admin::api-token-permission': AdminApiTokenPermission;
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
-      'api::document.document': ApiDocumentDocument;
-      'api::leave.leave': ApiLeaveLeave;
-      'api::transaction.transaction': ApiTransactionTransaction;
       'plugin::upload.file': PluginUploadFile;
       'plugin::upload.folder': PluginUploadFolder;
       'plugin::content-releases.release': PluginContentReleasesRelease;
@@ -977,6 +1035,11 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::department.department': ApiDepartmentDepartment;
+      'api::document.document': ApiDocumentDocument;
+      'api::leave.leave': ApiLeaveLeave;
+      'api::shift.shift': ApiShiftShift;
+      'api::transaction.transaction': ApiTransactionTransaction;
     }
   }
 }
