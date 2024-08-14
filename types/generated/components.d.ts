@@ -14,11 +14,15 @@ export interface UserJob extends Schema.Component {
       'api::department.department'
     >;
     grade: Attribute.Integer;
-    employment_type: Attribute.Enumeration<
-      ['full-time', 'part-time', 'temporary', 'intern']
-    >;
     hire_date: Attribute.Date & Attribute.Required;
     hire_end: Attribute.Date;
+    employment_type: Attribute.Enumeration<
+      ['full-time', 'part-time', 'intern', 'temporary']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'full-time'>;
+    shift: Attribute.Relation<'user.job', 'oneToOne', 'api::shift.shift'>;
+    country: Attribute.Relation<'user.job', 'oneToOne', 'api::country.country'>;
   };
 }
 

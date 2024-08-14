@@ -18,21 +18,33 @@
     "grade": {
       "type": "integer"
     },
-    "employment_type": {
-      "type": "enumeration",
-      "enum": [
-        "full-time",
-        "part-time",
-        "temporary",
-        "intern"
-      ]
-    },
     "hire_date": {
       "type": "date",
       "required": true
     },
     "hire_end": {
       "type": "date"
+    },
+    "employment_type": {
+      "type": "enumeration",
+      "enum": [
+        "full-time",
+        "part-time",
+        "intern",
+        "temporary"
+      ],
+      "required": true,
+      "default": "full-time"
+    },
+    "shift": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::shift.shift"
+    },
+    "country": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::country.country"
     }
   }
 }

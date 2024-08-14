@@ -103,6 +103,21 @@
       "type": "relation",
       "relation": "oneToMany",
       "target": "api::document.document"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "active",
+        "inactive"
+      ],
+      "required": true,
+      "default": "active"
+    },
+    "job": {
+      "type": "component",
+      "repeatable": false,
+      "component": "user.job",
+      "required": true
     }
   }
 }
