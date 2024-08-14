@@ -842,6 +842,36 @@ export interface ApiCountryCountry extends Schema.CollectionType {
   };
 }
 
+export interface ApiCurrencyCurrency extends Schema.CollectionType {
+  collectionName: 'currencies';
+  info: {
+    singularName: 'currency';
+    pluralName: 'currencies';
+    displayName: 'currency';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required & Attribute.Unique;
+    code: Attribute.String & Attribute.Required & Attribute.Unique;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::currency.currency',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::currency.currency',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiDepartmentDepartment extends Schema.CollectionType {
   collectionName: 'departments';
   info: {
@@ -1071,6 +1101,7 @@ declare module '@strapi/types' {
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
       'api::country.country': ApiCountryCountry;
+      'api::currency.currency': ApiCurrencyCurrency;
       'api::department.department': ApiDepartmentDepartment;
       'api::document.document': ApiDocumentDocument;
       'api::leave.leave': ApiLeaveLeave;

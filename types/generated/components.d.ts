@@ -89,6 +89,11 @@ export interface UserSalary extends Schema.Component {
         number
       > &
       Attribute.DefaultTo<0>;
+    currency: Attribute.Relation<
+      'user.salary',
+      'oneToOne',
+      'api::currency.currency'
+    >;
   };
 }
 

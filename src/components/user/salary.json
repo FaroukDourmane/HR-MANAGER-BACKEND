@@ -31,6 +31,11 @@
       "type": "float",
       "min": 0,
       "default": 0
+    },
+    "currency": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::currency.currency"
     }
   }
 }
