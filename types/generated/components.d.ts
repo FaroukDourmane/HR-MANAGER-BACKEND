@@ -30,14 +30,22 @@ export interface UserPersonal extends Schema.Component {
   collectionName: 'components_user_personals';
   info: {
     displayName: 'Personal';
+    description: '';
   };
   attributes: {
     birthday: Attribute.Date;
     gender: Attribute.Enumeration<['male', 'female']>;
     picture: Attribute.Media;
     personal_email: Attribute.Email;
-    nationality: Attribute.String;
     mobile: Attribute.String;
+    firstname: Attribute.String & Attribute.Required;
+    lastname: Attribute.String & Attribute.Required;
+    middlename: Attribute.String;
+    nationality: Attribute.Relation<
+      'user.personal',
+      'oneToOne',
+      'api::country.country'
+    >;
   };
 }
 

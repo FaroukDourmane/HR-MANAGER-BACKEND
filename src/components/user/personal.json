@@ -1,7 +1,8 @@
 {
   "collectionName": "components_user_personals",
   "info": {
-    "displayName": "Personal"
+    "displayName": "Personal",
+    "description": ""
   },
   "options": {},
   "attributes": {
@@ -16,20 +17,34 @@
       ]
     },
     "picture": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
       "allowedTypes": [
         "images"
-      ],
-      "type": "media",
-      "multiple": false
+      ]
     },
     "personal_email": {
       "type": "email"
     },
-    "nationality": {
-      "type": "string"
-    },
     "mobile": {
       "type": "string"
+    },
+    "firstname": {
+      "type": "string",
+      "required": true
+    },
+    "lastname": {
+      "type": "string",
+      "required": true
+    },
+    "middlename": {
+      "type": "string"
+    },
+    "nationality": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::country.country"
     }
   }
 }

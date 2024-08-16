@@ -781,9 +781,6 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       'oneToMany',
       'api::transaction.transaction'
     >;
-    firstname: Attribute.String & Attribute.Required;
-    lastname: Attribute.String & Attribute.Required;
-    middlename: Attribute.String;
     personal: Attribute.Component<'user.personal'>;
     documents: Attribute.Relation<
       'plugin::users-permissions.user',
