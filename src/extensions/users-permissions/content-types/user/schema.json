@@ -107,6 +107,12 @@
       "repeatable": false,
       "component": "user.job",
       "required": true
+    },
+    "leave_balances": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::leave-balance.leave-balance",
+      "mappedBy": "user"
     }
   }
 }

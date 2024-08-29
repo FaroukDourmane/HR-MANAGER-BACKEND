@@ -1,0 +1,41 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leave_balances",
+  "info": {
+    "singularName": "leave-balance",
+    "pluralName": "leave-balances",
+    "displayName": "Leave Balance"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "leave_balances"
+    },
+    "balance": {
+      "type": "integer",
+      "required": true,
+      "min": 1
+    },
+    "carry_over": {
+      "type": "integer",
+      "default": 0
+    },
+    "available_from": {
+      "type": "date",
+      "required": true
+    },
+    "expiry_date": {
+      "type": "date",
+      "required": true
+    },
+    "carry_over_expiry": {
+      "type": "date"
+    }
+  }
+}

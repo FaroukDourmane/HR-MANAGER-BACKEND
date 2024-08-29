@@ -791,6 +791,11 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<'active'>;
     job: Attribute.Component<'user.job'> & Attribute.Required;
+    leave_balances: Attribute.Relation<
+      'plugin::users-permissions.user',
+      'oneToMany',
+      'api::leave-balance.leave-balance'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1003,6 +1008,51 @@ export interface ApiLeaveLeave extends Schema.CollectionType {
   };
 }
 
+export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
+  collectionName: 'leave_balances';
+  info: {
+    singularName: 'leave-balance';
+    pluralName: 'leave-balances';
+    displayName: 'Leave Balance';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    user: Attribute.Relation<
+      'api::leave-balance.leave-balance',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
+    balance: Attribute.Integer &
+      Attribute.Required &
+      Attribute.SetMinMax<
+        {
+          min: 1;
+        },
+        number
+      >;
+    carry_over: Attribute.Integer & Attribute.DefaultTo<0>;
+    available_from: Attribute.Date & Attribute.Required;
+    expiry_date: Attribute.Date & Attribute.Required;
+    carry_over_expiry: Attribute.Date;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::leave-balance.leave-balance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::leave-balance.leave-balance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiShiftShift extends Schema.CollectionType {
   collectionName: 'shifts';
   info: {
@@ -1102,6 +1152,7 @@ declare module '@strapi/types' {
       'api::department.department': ApiDepartmentDepartment;
       'api::document.document': ApiDocumentDocument;
       'api::leave.leave': ApiLeaveLeave;
+      'api::leave-balance.leave-balance': ApiLeaveBalanceLeaveBalance;
       'api::shift.shift': ApiShiftShift;
       'api::transaction.transaction': ApiTransactionTransaction;
     }
