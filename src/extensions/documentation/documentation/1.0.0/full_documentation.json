@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-08-29T06:43:38.232Z"
+    "x-generation-date": "2024-08-29T14:18:12.457Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -4292,6 +4292,7 @@
                                         "format": "time",
                                         "example": "12:54.000"
                                       },
+                                      "off_days": {},
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -4407,6 +4408,18 @@
                                     "carry_over_expiry": {
                                       "type": "string",
                                       "format": "date"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "annual",
+                                        "halfDay",
+                                        "sick",
+                                        "excuse",
+                                        "maternity",
+                                        "paternity",
+                                        "compassionate"
+                                      ]
                                     },
                                     "createdAt": {
                                       "type": "string",
@@ -4636,6 +4649,18 @@
               "carry_over_expiry": {
                 "type": "string",
                 "format": "date"
+              },
+              "type": {
+                "type": "string",
+                "enum": [
+                  "annual",
+                  "halfDay",
+                  "sick",
+                  "excuse",
+                  "maternity",
+                  "paternity",
+                  "compassionate"
+                ]
               }
             }
           }
@@ -6580,6 +6605,7 @@
                                         "format": "time",
                                         "example": "12:54.000"
                                       },
+                                      "off_days": {},
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -6696,6 +6722,18 @@
                                       "type": "string",
                                       "format": "date"
                                     },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "annual",
+                                        "halfDay",
+                                        "sick",
+                                        "excuse",
+                                        "maternity",
+                                        "paternity",
+                                        "compassionate"
+                                      ]
+                                    },
                                     "createdAt": {
                                       "type": "string",
                                       "format": "date-time"
@@ -6811,6 +6849,18 @@
             "type": "string",
             "format": "date"
           },
+          "type": {
+            "type": "string",
+            "enum": [
+              "annual",
+              "halfDay",
+              "sick",
+              "excuse",
+              "maternity",
+              "paternity",
+              "compassionate"
+            ]
+          },
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -6886,7 +6936,8 @@
           "data": {
             "required": [
               "name",
-              "start_time"
+              "start_time",
+              "off_days"
             ],
             "type": "object",
             "properties": {
@@ -6902,7 +6953,8 @@
                 "type": "string",
                 "format": "time",
                 "example": "12:54.000"
-              }
+              },
+              "off_days": {}
             }
           }
         }
@@ -6957,7 +7009,8 @@
         "type": "object",
         "required": [
           "name",
-          "start_time"
+          "start_time",
+          "off_days"
         ],
         "properties": {
           "name": {
@@ -6973,6 +7026,7 @@
             "format": "time",
             "example": "12:54.000"
           },
+          "off_days": {},
           "createdAt": {
             "type": "string",
             "format": "date-time"
@@ -9291,6 +9345,7 @@
                                         "format": "time",
                                         "example": "12:54.000"
                                       },
+                                      "off_days": {},
                                       "createdAt": {
                                         "type": "string",
                                         "format": "date-time"
@@ -9406,6 +9461,18 @@
                                     "carry_over_expiry": {
                                       "type": "string",
                                       "format": "date"
+                                    },
+                                    "type": {
+                                      "type": "string",
+                                      "enum": [
+                                        "annual",
+                                        "halfDay",
+                                        "sick",
+                                        "excuse",
+                                        "maternity",
+                                        "paternity",
+                                        "compassionate"
+                                      ]
                                     },
                                     "createdAt": {
                                       "type": "string",

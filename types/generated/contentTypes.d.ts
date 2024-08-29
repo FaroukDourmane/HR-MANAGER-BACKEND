@@ -1014,6 +1014,7 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
     singularName: 'leave-balance';
     pluralName: 'leave-balances';
     displayName: 'Leave Balance';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1036,6 +1037,17 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
     available_from: Attribute.Date & Attribute.Required;
     expiry_date: Attribute.Date & Attribute.Required;
     carry_over_expiry: Attribute.Date;
+    type: Attribute.Enumeration<
+      [
+        'annual',
+        'halfDay',
+        'sick',
+        'excuse',
+        'maternity',
+        'paternity',
+        'compassionate'
+      ]
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1059,6 +1071,7 @@ export interface ApiShiftShift extends Schema.CollectionType {
     singularName: 'shift';
     pluralName: 'shifts';
     displayName: 'Shift';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1067,6 +1080,7 @@ export interface ApiShiftShift extends Schema.CollectionType {
     name: Attribute.String & Attribute.Required;
     start_time: Attribute.Time & Attribute.Required;
     end_time: Attribute.Time;
+    off_days: Attribute.JSON & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

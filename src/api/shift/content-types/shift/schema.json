@@ -4,7 +4,8 @@
   "info": {
     "singularName": "shift",
     "pluralName": "shifts",
-    "displayName": "Shift"
+    "displayName": "Shift",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -21,6 +22,10 @@
     },
     "end_time": {
       "type": "time"
+    },
+    "off_days": {
+      "type": "json",
+      "required": true
     }
   }
 }

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "leave-balance",
     "pluralName": "leave-balances",
-    "displayName": "Leave Balance"
+    "displayName": "Leave Balance",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -36,6 +37,18 @@
     },
     "carry_over_expiry": {
       "type": "date"
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "annual",
+        "halfDay",
+        "sick",
+        "excuse",
+        "maternity",
+        "paternity",
+        "compassionate"
+      ]
     }
   }
 }
