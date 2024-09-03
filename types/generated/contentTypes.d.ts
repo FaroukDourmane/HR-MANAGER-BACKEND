@@ -1038,15 +1038,7 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
     expiry_date: Attribute.Date & Attribute.Required;
     carry_over_expiry: Attribute.Date;
     type: Attribute.Enumeration<
-      [
-        'annual',
-        'halfDay',
-        'sick',
-        'excuse',
-        'maternity',
-        'paternity',
-        'compassionate'
-      ]
+      ['annual', 'sick', 'excuse', 'maternity', 'paternity', 'compassionate']
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

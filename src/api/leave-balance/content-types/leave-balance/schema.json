@@ -42,7 +42,6 @@
       "type": "enumeration",
       "enum": [
         "annual",
-        "halfDay",
         "sick",
         "excuse",
         "maternity",
