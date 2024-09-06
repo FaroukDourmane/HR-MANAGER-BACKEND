@@ -949,6 +949,38 @@ export interface ApiDocumentDocument extends Schema.CollectionType {
   };
 }
 
+export interface ApiHolidayHoliday extends Schema.CollectionType {
+  collectionName: 'holidays';
+  info: {
+    singularName: 'holiday';
+    pluralName: 'holidays';
+    displayName: 'Holiday';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    from: Attribute.Date & Attribute.Required;
+    to: Attribute.Date & Attribute.Required;
+    yearly: Attribute.Boolean & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::holiday.holiday',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::holiday.holiday',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiLeaveLeave extends Schema.CollectionType {
   collectionName: 'leaves';
   info: {
@@ -991,6 +1023,12 @@ export interface ApiLeaveLeave extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<false>;
     comment: Attribute.Text;
+    status: Attribute.Enumeration<
+      ['pending', 'approved', 'rejected', 'cancelled']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'pending'>;
+    rejection_reason: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1095,7 +1133,8 @@ export interface ApiTransactionTransaction extends Schema.CollectionType {
   info: {
     singularName: 'transaction';
     pluralName: 'transactions';
-    displayName: 'transaction';
+    displayName: 'Payroll Transactions';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1157,6 +1196,7 @@ declare module '@strapi/types' {
       'api::currency.currency': ApiCurrencyCurrency;
       'api::department.department': ApiDepartmentDepartment;
       'api::document.document': ApiDocumentDocument;
+      'api::holiday.holiday': ApiHolidayHoliday;
       'api::leave.leave': ApiLeaveLeave;
       'api::leave-balance.leave-balance': ApiLeaveBalanceLeaveBalance;
       'api::shift.shift': ApiShiftShift;

@@ -64,6 +64,20 @@
     },
     "comment": {
       "type": "text"
+    },
+    "status": {
+      "type": "enumeration",
+      "enum": [
+        "pending",
+        "approved",
+        "rejected",
+        "cancelled"
+      ],
+      "required": true,
+      "default": "pending"
+    },
+    "rejection_reason": {
+      "type": "string"
     }
   }
 }
