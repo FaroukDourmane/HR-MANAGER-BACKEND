@@ -998,7 +998,8 @@ export interface ApiLeaveLeave extends Schema.CollectionType {
     type: Attribute.Enumeration<
       [
         'annual',
-        'halfDay',
+        'unpaid',
+        'halfday',
         'sick',
         'excuse',
         'maternity',
@@ -1076,8 +1077,22 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
     expiry_date: Attribute.Date & Attribute.Required;
     carry_over_expiry: Attribute.Date;
     type: Attribute.Enumeration<
-      ['annual', 'sick', 'excuse', 'maternity', 'paternity', 'compassionate']
+      [
+        'annual',
+        'unpaid',
+        'sick',
+        'excuse',
+        'maternity',
+        'paternity',
+        'compassionate'
+      ]
     >;
+    leave_transactions: Attribute.Relation<
+      'api::leave-balance.leave-balance',
+      'oneToMany',
+      'api::leave-transaction.leave-transaction'
+    >;
+    year: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1088,6 +1103,43 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::leave-balance.leave-balance',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiLeaveTransactionLeaveTransaction
+  extends Schema.CollectionType {
+  collectionName: 'leave_transactions';
+  info: {
+    singularName: 'leave-transaction';
+    pluralName: 'leave-transactions';
+    displayName: 'leave transaction';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    leave_balance: Attribute.Relation<
+      'api::leave-transaction.leave-transaction',
+      'manyToOne',
+      'api::leave-balance.leave-balance'
+    >;
+    amount: Attribute.Decimal & Attribute.Required;
+    type: Attribute.Enumeration<['addition', 'deduction']> & Attribute.Required;
+    comment: Attribute.String;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::leave-transaction.leave-transaction',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::leave-transaction.leave-transaction',
       'oneToOne',
       'admin::user'
     > &
@@ -1199,6 +1251,7 @@ declare module '@strapi/types' {
       'api::holiday.holiday': ApiHolidayHoliday;
       'api::leave.leave': ApiLeaveLeave;
       'api::leave-balance.leave-balance': ApiLeaveBalanceLeaveBalance;
+      'api::leave-transaction.leave-transaction': ApiLeaveTransactionLeaveTransaction;
       'api::shift.shift': ApiShiftShift;
       'api::transaction.transaction': ApiTransactionTransaction;
     }

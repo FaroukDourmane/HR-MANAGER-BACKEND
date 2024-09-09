@@ -1,0 +1,36 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leave_transactions",
+  "info": {
+    "singularName": "leave-transaction",
+    "pluralName": "leave-transactions",
+    "displayName": "leave transaction"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "leave_balance": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::leave-balance.leave-balance",
+      "inversedBy": "leave_transactions"
+    },
+    "amount": {
+      "type": "decimal",
+      "required": true
+    },
+    "type": {
+      "type": "enumeration",
+      "enum": [
+        "addition",
+        "deduction"
+      ],
+      "required": true
+    },
+    "comment": {
+      "type": "string"
+    }
+  }
+}
