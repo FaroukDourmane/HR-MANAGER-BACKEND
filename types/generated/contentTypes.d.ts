@@ -813,6 +813,27 @@ export interface PluginUsersPermissionsUser extends Schema.CollectionType {
   };
 }
 
+export interface ApiBankBank extends Schema.CollectionType {
+  collectionName: 'banks';
+  info: {
+    singularName: 'bank';
+    pluralName: 'banks';
+    displayName: 'bank';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    name: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<'api::bank.bank', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<'api::bank.bank', 'oneToOne', 'admin::user'> &
+      Attribute.Private;
+  };
+}
+
 export interface ApiCountryCountry extends Schema.CollectionType {
   collectionName: 'countries';
   info: {
@@ -974,6 +995,35 @@ export interface ApiHolidayHoliday extends Schema.CollectionType {
       Attribute.Private;
     updatedBy: Attribute.Relation<
       'api::holiday.holiday',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
+export interface ApiJobTitleJobTitle extends Schema.CollectionType {
+  collectionName: 'job_titles';
+  info: {
+    singularName: 'job-title';
+    pluralName: 'job-titles';
+    displayName: 'job title';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    title: Attribute.String & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::job-title.job-title',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::job-title.job-title',
       'oneToOne',
       'admin::user'
     > &
@@ -1244,11 +1294,13 @@ declare module '@strapi/types' {
       'plugin::users-permissions.permission': PluginUsersPermissionsPermission;
       'plugin::users-permissions.role': PluginUsersPermissionsRole;
       'plugin::users-permissions.user': PluginUsersPermissionsUser;
+      'api::bank.bank': ApiBankBank;
       'api::country.country': ApiCountryCountry;
       'api::currency.currency': ApiCurrencyCurrency;
       'api::department.department': ApiDepartmentDepartment;
       'api::document.document': ApiDocumentDocument;
       'api::holiday.holiday': ApiHolidayHoliday;
+      'api::job-title.job-title': ApiJobTitleJobTitle;
       'api::leave.leave': ApiLeaveLeave;
       'api::leave-balance.leave-balance': ApiLeaveBalanceLeaveBalance;
       'api::leave-transaction.leave-transaction': ApiLeaveTransactionLeaveTransaction;
