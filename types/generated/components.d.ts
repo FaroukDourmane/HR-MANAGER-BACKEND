@@ -7,7 +7,6 @@ export interface UserJob extends Schema.Component {
     description: '';
   };
   attributes: {
-    job_title: Attribute.String & Attribute.Required;
     department: Attribute.Relation<
       'user.job',
       'oneToOne',
@@ -23,6 +22,11 @@ export interface UserJob extends Schema.Component {
       Attribute.DefaultTo<'full-time'>;
     shift: Attribute.Relation<'user.job', 'oneToOne', 'api::shift.shift'>;
     country: Attribute.Relation<'user.job', 'oneToOne', 'api::country.country'>;
+    job_title: Attribute.Relation<
+      'user.job',
+      'oneToOne',
+      'api::job-title.job-title'
+    >;
   };
 }
 
@@ -102,6 +106,9 @@ export interface UserSalary extends Schema.Component {
       'oneToOne',
       'api::currency.currency'
     >;
+    bank: Attribute.Relation<'user.salary', 'oneToOne', 'api::bank.bank'>;
+    account_number: Attribute.String;
+    iban: Attribute.String;
   };
 }
 

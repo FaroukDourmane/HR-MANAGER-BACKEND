@@ -6,10 +6,6 @@
   },
   "options": {},
   "attributes": {
-    "job_title": {
-      "type": "string",
-      "required": true
-    },
     "department": {
       "type": "relation",
       "relation": "oneToOne",
@@ -45,6 +41,11 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::country.country"
+    },
+    "job_title": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::job-title.job-title"
     }
   }
 }

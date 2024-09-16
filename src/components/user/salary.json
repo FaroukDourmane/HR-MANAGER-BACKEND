@@ -36,6 +36,17 @@
       "type": "relation",
       "relation": "oneToOne",
       "target": "api::currency.currency"
+    },
+    "bank": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::bank.bank"
+    },
+    "account_number": {
+      "type": "string"
+    },
+    "iban": {
+      "type": "string"
     }
   }
 }
