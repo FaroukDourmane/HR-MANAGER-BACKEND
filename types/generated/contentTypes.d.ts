@@ -1054,7 +1054,8 @@ export interface ApiLeaveLeave extends Schema.CollectionType {
         'excuse',
         'maternity',
         'paternity',
-        'compassionate'
+        'compassionate',
+        'holiday'
       ]
     > &
       Attribute.Required;
@@ -1134,7 +1135,8 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
         'excuse',
         'maternity',
         'paternity',
-        'compassionate'
+        'compassionate',
+        'holiday'
       ]
     >;
     leave_transactions: Attribute.Relation<
@@ -1167,6 +1169,7 @@ export interface ApiLeaveTransactionLeaveTransaction
     singularName: 'leave-transaction';
     pluralName: 'leave-transactions';
     displayName: 'leave transaction';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1178,7 +1181,8 @@ export interface ApiLeaveTransactionLeaveTransaction
       'api::leave-balance.leave-balance'
     >;
     amount: Attribute.Decimal & Attribute.Required;
-    type: Attribute.Enumeration<['addition', 'deduction']> & Attribute.Required;
+    transaction_type: Attribute.Enumeration<['addition', 'deduction']> &
+      Attribute.Required;
     comment: Attribute.String;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;

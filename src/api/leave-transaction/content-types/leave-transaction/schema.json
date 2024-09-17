@@ -4,7 +4,8 @@
   "info": {
     "singularName": "leave-transaction",
     "pluralName": "leave-transactions",
-    "displayName": "leave transaction"
+    "displayName": "leave transaction",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -21,7 +22,7 @@
       "type": "decimal",
       "required": true
     },
-    "type": {
+    "transaction_type": {
       "type": "enumeration",
       "enum": [
         "addition",

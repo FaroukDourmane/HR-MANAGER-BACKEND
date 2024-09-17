@@ -30,7 +30,8 @@
         "excuse",
         "maternity",
         "paternity",
-        "compassionate"
+        "compassionate",
+        "holiday"
       ],
       "required": true
     },

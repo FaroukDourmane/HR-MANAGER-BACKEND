@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-09-16T11:14:42.260Z"
+    "x-generation-date": "2024-09-17T07:27:25.754Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -3338,7 +3338,8 @@
                   "excuse",
                   "maternity",
                   "paternity",
-                  "compassionate"
+                  "compassionate",
+                  "holiday"
                 ]
               },
               "attachments": {
@@ -3478,7 +3479,8 @@
               "excuse",
               "maternity",
               "paternity",
-              "compassionate"
+              "compassionate",
+              "holiday"
             ]
           },
           "attachments": {
@@ -4348,7 +4350,8 @@
                                         "excuse",
                                         "maternity",
                                         "paternity",
-                                        "compassionate"
+                                        "compassionate",
+                                        "holiday"
                                       ]
                                     },
                                     "attachments": {
@@ -5780,7 +5783,8 @@
                                         "excuse",
                                         "maternity",
                                         "paternity",
-                                        "compassionate"
+                                        "compassionate",
+                                        "holiday"
                                       ]
                                     },
                                     "leave_transactions": {
@@ -5818,7 +5822,7 @@
                                                     "type": "number",
                                                     "format": "float"
                                                   },
-                                                  "type": {
+                                                  "transaction_type": {
                                                     "type": "string",
                                                     "enum": [
                                                       "addition",
@@ -6131,7 +6135,8 @@
                   "excuse",
                   "maternity",
                   "paternity",
-                  "compassionate"
+                  "compassionate",
+                  "holiday"
                 ]
               },
               "leave_transactions": {
@@ -6700,7 +6705,8 @@
                                         "excuse",
                                         "maternity",
                                         "paternity",
-                                        "compassionate"
+                                        "compassionate",
+                                        "holiday"
                                       ]
                                     },
                                     "attachments": {
@@ -8363,7 +8369,8 @@
                                         "excuse",
                                         "maternity",
                                         "paternity",
-                                        "compassionate"
+                                        "compassionate",
+                                        "holiday"
                                       ]
                                     },
                                     "leave_transactions": {
@@ -8401,7 +8408,7 @@
                                                     "type": "number",
                                                     "format": "float"
                                                   },
-                                                  "type": {
+                                                  "transaction_type": {
                                                     "type": "string",
                                                     "enum": [
                                                       "addition",
@@ -8587,7 +8594,8 @@
               "excuse",
               "maternity",
               "paternity",
-              "compassionate"
+              "compassionate",
+              "holiday"
             ]
           },
           "leave_transactions": {
@@ -8688,7 +8696,7 @@
           "data": {
             "required": [
               "amount",
-              "type"
+              "transaction_type"
             ],
             "type": "object",
             "properties": {
@@ -8707,7 +8715,7 @@
                 "type": "number",
                 "format": "float"
               },
-              "type": {
+              "transaction_type": {
                 "type": "string",
                 "enum": [
                   "addition",
@@ -8771,7 +8779,7 @@
         "type": "object",
         "required": [
           "amount",
-          "type"
+          "transaction_type"
         ],
         "properties": {
           "leave_balance": {
@@ -9276,7 +9284,8 @@
                                                     "excuse",
                                                     "maternity",
                                                     "paternity",
-                                                    "compassionate"
+                                                    "compassionate",
+                                                    "holiday"
                                                   ]
                                                 },
                                                 "attachments": {
@@ -10976,7 +10985,8 @@
                           "excuse",
                           "maternity",
                           "paternity",
-                          "compassionate"
+                          "compassionate",
+                          "holiday"
                         ]
                       },
                       "leave_transactions": {
@@ -11014,7 +11024,7 @@
                                       "type": "number",
                                       "format": "float"
                                     },
-                                    "type": {
+                                    "transaction_type": {
                                       "type": "string",
                                       "enum": [
                                         "addition",
@@ -11128,7 +11138,7 @@
             "type": "number",
             "format": "float"
           },
-          "type": {
+          "transaction_type": {
             "type": "string",
             "enum": [
               "addition",
@@ -12227,7 +12237,8 @@
                                         "excuse",
                                         "maternity",
                                         "paternity",
-                                        "compassionate"
+                                        "compassionate",
+                                        "holiday"
                                       ]
                                     },
                                     "attachments": {
@@ -13890,7 +13901,8 @@
                                         "excuse",
                                         "maternity",
                                         "paternity",
-                                        "compassionate"
+                                        "compassionate",
+                                        "holiday"
                                       ]
                                     },
                                     "leave_transactions": {
@@ -13928,7 +13940,7 @@
                                                     "type": "number",
                                                     "format": "float"
                                                   },
-                                                  "type": {
+                                                  "transaction_type": {
                                                     "type": "string",
                                                     "enum": [
                                                       "addition",
