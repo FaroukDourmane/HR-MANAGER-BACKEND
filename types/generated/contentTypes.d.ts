@@ -1081,6 +1081,11 @@ export interface ApiLeaveLeave extends Schema.CollectionType {
       Attribute.Required &
       Attribute.DefaultTo<'pending'>;
     rejection_reason: Attribute.String;
+    balance_reference: Attribute.Relation<
+      'api::leave.leave',
+      'manyToOne',
+      'api::leave-balance.leave-balance'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1139,12 +1144,17 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
         'holiday'
       ]
     >;
-    leave_transactions: Attribute.Relation<
+    year: Attribute.String & Attribute.Required;
+    leaves: Attribute.Relation<
+      'api::leave-balance.leave-balance',
+      'oneToMany',
+      'api::leave.leave'
+    >;
+    transactions: Attribute.Relation<
       'api::leave-balance.leave-balance',
       'oneToMany',
       'api::leave-transaction.leave-transaction'
     >;
-    year: Attribute.String & Attribute.Required;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<
@@ -1175,7 +1185,7 @@ export interface ApiLeaveTransactionLeaveTransaction
     draftAndPublish: false;
   };
   attributes: {
-    leave_balance: Attribute.Relation<
+    balance_reference: Attribute.Relation<
       'api::leave-transaction.leave-transaction',
       'manyToOne',
       'api::leave-balance.leave-balance'

@@ -80,6 +80,12 @@
     },
     "rejection_reason": {
       "type": "string"
+    },
+    "balance_reference": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "api::leave-balance.leave-balance",
+      "inversedBy": "leaves"
     }
   }
 }

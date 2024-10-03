@@ -51,15 +51,21 @@
         "holiday"
       ]
     },
-    "leave_transactions": {
-      "type": "relation",
-      "relation": "oneToMany",
-      "target": "api::leave-transaction.leave-transaction",
-      "mappedBy": "leave_balance"
-    },
     "year": {
       "type": "string",
       "required": true
+    },
+    "leaves": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::leave.leave",
+      "mappedBy": "balance_reference"
+    },
+    "transactions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::leave-transaction.leave-transaction",
+      "mappedBy": "balance_reference"
     }
   }
 }

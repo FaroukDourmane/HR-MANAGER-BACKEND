@@ -51,13 +51,13 @@ module.exports = {
       );
 
       const accumulatedBalances = leaves.reduce((acc, leave) => {
-        let balanceToAdd = leave.balance;
+        let balanceToAdd = leave?.balance;
       
         // Check if the leave has expired
-        if (new Date(leave.expiry_date) <= new Date(currentDate)) {
+        if (new Date(leave?.expiry_date) <= new Date(currentDate)) {
           // If it has expired, use the carry over balance if it's valid
-          if (leave.carry_over > 0 && new Date(leave.carry_over_expiry) > new Date(currentDate)) {
-            balanceToAdd = leave.carry_over; // Only carry over the allowed balance
+          if (leave?.carry_over > 0 && new Date(leave?.carry_over_expiry) > new Date(currentDate)) {
+            balanceToAdd = leave?.carry_over; // Only carry over the allowed balance
           } else {
             balanceToAdd = 0; // Expired without valid carry over, so no balance is added
           }

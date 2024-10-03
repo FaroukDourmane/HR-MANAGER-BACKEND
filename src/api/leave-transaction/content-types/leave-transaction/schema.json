@@ -12,11 +12,11 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "leave_balance": {
+    "balance_reference": {
       "type": "relation",
       "relation": "manyToOne",
       "target": "api::leave-balance.leave-balance",
-      "inversedBy": "leave_transactions"
+      "inversedBy": "transactions"
     },
     "amount": {
       "type": "decimal",
