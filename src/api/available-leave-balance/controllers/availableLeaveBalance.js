@@ -1,6 +1,8 @@
 // controllers/available-leave-balance.js or controllers/availableLeaveBalance.js
 'use strict';
 
+const dayjs = require("dayjs");
+
 /**
  * A set of functions called "actions" for `availableLeaveBalance`
  */
@@ -9,6 +11,7 @@ module.exports = {
   leaveBalances: async (ctx, next) => {
     try {
       const currentDate = new Date().toISOString();
+      const currentYear = new Date().getFullYear().toString();
       const userId = ctx.params.id;  // Retrieve userId from URL parameters
 
       if (!userId) {
@@ -22,63 +25,82 @@ module.exports = {
           populate: {
             user: {
               fields: ["id"],
+            },
+            leaves: {
+              populate: "*"
+            },
+            transactions: {
+              populate: "*"
             }
           },
           filters: {
             user: {
-              id: userId,
+              id: userId
             },
-            available_from: {
-              $lte: currentDate,
+            year: {
+              $eq: currentYear
             },
-            $or: [
-              {
-                expiry_date: {
-                  $gt: currentDate,
-                },
-              },
-              {
-                carry_over: {
-                  $gt: 0,
-                },
-                carry_over_expiry: {
-                  $gt: currentDate,
-                }
-              }
-            ]
+            // available_from: {
+            //   $lte: currentDate,
+            // },
+            // $or: [
+            //   {
+            //     expiry_date: {
+            //       $gt: currentDate,
+            //     },
+            //   },
+            //   {
+            //     carry_over: {
+            //       $gt: 0,
+            //     },
+            //     carry_over_expiry: {
+            //       $gt: currentDate,
+            //     }
+            //   }
+            // ]
           }
         }
       );
 
-      const accumulatedBalances = leaves.reduce((acc, leave) => {
-        let balanceToAdd = leave?.balance;
+      let availableBalance = [];
+
+      leaves.map((balance) => {
+        let days = balance?.balance;
       
-        // Check if the leave has expired
-        if (new Date(leave?.expiry_date) <= new Date(currentDate)) {
-          // If it has expired, use the carry over balance if it's valid
-          if (leave?.carry_over > 0 && new Date(leave?.carry_over_expiry) > new Date(currentDate)) {
-            balanceToAdd = leave?.carry_over; // Only carry over the allowed balance
-          } else {
-            balanceToAdd = 0; // Expired without valid carry over, so no balance is added
-          }
+        if ( balance?.leaves ) {
+          balance.leaves.map((leave) => {
+            const fromDate = dayjs(leave.from);
+            const toDate = dayjs(leave.to);
+            // Calculate the difference in days and add 1 to include both "from" and "to" dates
+            const dayDifference = toDate.diff(fromDate, 'day');
+            // Subtract the leave days from the balance
+            days -= dayDifference;
+          });
+        }
+
+        if ( balance?.transactions ) {
+          balance.transactions.map((transaction) => {
+            if ( transaction.transaction_type == "addition" ) {
+              days += transaction.amount;
+            } else if ( transaction.transaction_type == "deduction" ) {
+              days -= transaction.amount;
+            }
+          });
         }
       
-        // Add the balance to the appropriate type
-        if (acc[leave.type]) {
-          acc[leave.type] += balanceToAdd;
-        } else {
-          acc[leave.type] = balanceToAdd;
-        }
-      
-        return acc;
+        availableBalance.push({
+          type: balance.type,
+          main_balance: balance.balance,
+          remaining_balance: days
+        })
       }, {});
 
-      const result = Object.keys(accumulatedBalances).map(type => ({
-        type,
-        balance: accumulatedBalances[type]
-      }));
+      // const result = Object.keys(accumulatedBalances).map(type => ({
+      //   type,
+      //   balance: accumulatedBalances[type]
+      // }));
 
-      ctx.body = result;
+      ctx.body = availableBalance;
     } catch (err) {
       console.error(err);
       ctx.status = err.status || 500;

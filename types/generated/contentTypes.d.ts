@@ -931,6 +931,7 @@ export interface ApiDocumentDocument extends Schema.CollectionType {
     singularName: 'document';
     pluralName: 'documents';
     displayName: 'Document';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -953,6 +954,12 @@ export interface ApiDocumentDocument extends Schema.CollectionType {
       Attribute.Required;
     other_type: Attribute.String;
     files: Attribute.Media;
+    expiry: Attribute.Date;
+    user: Attribute.Relation<
+      'api::document.document',
+      'manyToOne',
+      'plugin::users-permissions.user'
+    >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

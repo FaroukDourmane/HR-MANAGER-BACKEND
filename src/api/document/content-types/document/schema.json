@@ -4,7 +4,8 @@
   "info": {
     "singularName": "document",
     "pluralName": "documents",
-    "displayName": "Document"
+    "displayName": "Document",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -31,12 +32,22 @@
       "type": "string"
     },
     "files": {
+      "type": "media",
+      "multiple": true,
+      "required": false,
       "allowedTypes": [
         "images",
         "files"
-      ],
-      "type": "media",
-      "multiple": true
+      ]
+    },
+    "expiry": {
+      "type": "date"
+    },
+    "user": {
+      "type": "relation",
+      "relation": "manyToOne",
+      "target": "plugin::users-permissions.user",
+      "inversedBy": "documents"
     }
   }
 }
