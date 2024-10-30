@@ -1,0 +1,33 @@
+{
+  "kind": "collectionType",
+  "collectionName": "leave_types",
+  "info": {
+    "singularName": "leave-type",
+    "pluralName": "leave-types",
+    "displayName": "leave-type"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "type": {
+      "type": "string",
+      "required": true,
+      "unique": true
+    },
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "active": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "yearly_balance": {
+      "type": "integer",
+      "required": true
+    }
+  }
+}

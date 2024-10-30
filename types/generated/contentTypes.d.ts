@@ -1218,6 +1218,38 @@ export interface ApiLeaveTransactionLeaveTransaction
   };
 }
 
+export interface ApiLeaveTypeLeaveType extends Schema.CollectionType {
+  collectionName: 'leave_types';
+  info: {
+    singularName: 'leave-type';
+    pluralName: 'leave-types';
+    displayName: 'leave-type';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    type: Attribute.String & Attribute.Required & Attribute.Unique;
+    label: Attribute.String & Attribute.Required;
+    active: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
+    yearly_balance: Attribute.Integer & Attribute.Required;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::leave-type.leave-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::leave-type.leave-type',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiShiftShift extends Schema.CollectionType {
   collectionName: 'shifts';
   info: {
@@ -1325,6 +1357,7 @@ declare module '@strapi/types' {
       'api::leave.leave': ApiLeaveLeave;
       'api::leave-balance.leave-balance': ApiLeaveBalanceLeaveBalance;
       'api::leave-transaction.leave-transaction': ApiLeaveTransactionLeaveTransaction;
+      'api::leave-type.leave-type': ApiLeaveTypeLeaveType;
       'api::shift.shift': ApiShiftShift;
       'api::transaction.transaction': ApiTransactionTransaction;
     }

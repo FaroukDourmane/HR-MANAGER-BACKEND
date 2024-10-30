@@ -10,7 +10,7 @@ const dayjs = require("dayjs");
 module.exports = {
   leaveBalances: async (ctx, next) => {
     try {
-      const currentDate = new Date().toISOString();
+      // const currentDate = new Date().toISOString();
       const currentYear = new Date().getFullYear().toString();
       const userId = ctx.params.id;  // Retrieve userId from URL parameters
 
@@ -94,11 +94,6 @@ module.exports = {
           remaining_balance: days
         })
       }, {});
-
-      // const result = Object.keys(accumulatedBalances).map(type => ({
-      //   type,
-      //   balance: accumulatedBalances[type]
-      // }));
 
       ctx.body = availableBalance;
     } catch (err) {
