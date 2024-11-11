@@ -38,19 +38,6 @@
     "carry_over_expiry": {
       "type": "date"
     },
-    "type": {
-      "type": "enumeration",
-      "enum": [
-        "annual",
-        "unpaid",
-        "sick",
-        "excuse",
-        "maternity",
-        "paternity",
-        "compassionate",
-        "holiday"
-      ]
-    },
     "year": {
       "type": "string",
       "required": true
@@ -66,6 +53,11 @@
       "relation": "oneToMany",
       "target": "api::leave-transaction.leave-transaction",
       "mappedBy": "balance_reference"
+    },
+    "leave_type": {
+      "type": "relation",
+      "relation": "oneToOne",
+      "target": "api::leave-type.leave-type"
     }
   }
 }

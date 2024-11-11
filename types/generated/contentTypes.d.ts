@@ -1139,18 +1139,6 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
     available_from: Attribute.Date & Attribute.Required;
     expiry_date: Attribute.Date & Attribute.Required;
     carry_over_expiry: Attribute.Date;
-    type: Attribute.Enumeration<
-      [
-        'annual',
-        'unpaid',
-        'sick',
-        'excuse',
-        'maternity',
-        'paternity',
-        'compassionate',
-        'holiday'
-      ]
-    >;
     year: Attribute.String & Attribute.Required;
     leaves: Attribute.Relation<
       'api::leave-balance.leave-balance',
@@ -1161,6 +1149,11 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
       'api::leave-balance.leave-balance',
       'oneToMany',
       'api::leave-transaction.leave-transaction'
+    >;
+    leave_type: Attribute.Relation<
+      'api::leave-balance.leave-balance',
+      'oneToOne',
+      'api::leave-type.leave-type'
     >;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
@@ -1224,6 +1217,7 @@ export interface ApiLeaveTypeLeaveType extends Schema.CollectionType {
     singularName: 'leave-type';
     pluralName: 'leave-types';
     displayName: 'leave-type';
+    description: '';
   };
   options: {
     draftAndPublish: false;
@@ -1232,7 +1226,14 @@ export interface ApiLeaveTypeLeaveType extends Schema.CollectionType {
     type: Attribute.String & Attribute.Required & Attribute.Unique;
     label: Attribute.String & Attribute.Required;
     active: Attribute.Boolean & Attribute.Required & Attribute.DefaultTo<true>;
-    yearly_balance: Attribute.Integer & Attribute.Required;
+    increment_amount: Attribute.Float & Attribute.Required;
+    increment_type: Attribute.Enumeration<
+      ['yearly', 'monthly', 'daily', 'none']
+    > &
+      Attribute.Required &
+      Attribute.DefaultTo<'monthly'>;
+    unit: Attribute.Enumeration<['days', 'hours']> & Attribute.Required;
+    carry_over: Attribute.Integer & Attribute.Required & Attribute.DefaultTo<0>;
     createdAt: Attribute.DateTime;
     updatedAt: Attribute.DateTime;
     createdBy: Attribute.Relation<

@@ -4,7 +4,8 @@
   "info": {
     "singularName": "leave-type",
     "pluralName": "leave-types",
-    "displayName": "leave-type"
+    "displayName": "leave-type",
+    "description": ""
   },
   "options": {
     "draftAndPublish": false
@@ -25,9 +26,33 @@
       "default": true,
       "required": true
     },
-    "yearly_balance": {
-      "type": "integer",
+    "increment_amount": {
+      "type": "float",
       "required": true
+    },
+    "increment_type": {
+      "type": "enumeration",
+      "enum": [
+        "yearly",
+        "monthly",
+        "daily",
+        "none"
+      ],
+      "required": true,
+      "default": "monthly"
+    },
+    "unit": {
+      "type": "enumeration",
+      "enum": [
+        "days",
+        "hours"
+      ],
+      "required": true
+    },
+    "carry_over": {
+      "type": "integer",
+      "required": true,
+      "default": 0
     }
   }
 }

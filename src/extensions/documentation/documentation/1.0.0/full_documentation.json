@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-10-18T09:42:42.516Z"
+    "x-generation-date": "2024-11-11T13:49:29.380Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -2931,19 +2931,6 @@
                                                   "type": "string",
                                                   "format": "date"
                                                 },
-                                                "type": {
-                                                  "type": "string",
-                                                  "enum": [
-                                                    "annual",
-                                                    "unpaid",
-                                                    "sick",
-                                                    "excuse",
-                                                    "maternity",
-                                                    "paternity",
-                                                    "compassionate",
-                                                    "holiday"
-                                                  ]
-                                                },
                                                 "year": {
                                                   "type": "string"
                                                 },
@@ -3050,6 +3037,98 @@
                                                                         "type": "object",
                                                                         "properties": {}
                                                                       }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "leave_type": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string"
+                                                            },
+                                                            "label": {
+                                                              "type": "string"
+                                                            },
+                                                            "active": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "increment_amount": {
+                                                              "type": "number",
+                                                              "format": "float"
+                                                            },
+                                                            "increment_type": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "yearly",
+                                                                "monthly",
+                                                                "daily",
+                                                                "none"
+                                                              ]
+                                                            },
+                                                            "unit": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "days",
+                                                                "hours"
+                                                              ]
+                                                            },
+                                                            "carry_over": {
+                                                              "type": "integer"
+                                                            },
+                                                            "createdAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "updatedAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "createdBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "updatedBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
                                                                     }
                                                                   }
                                                                 }
@@ -6556,19 +6635,6 @@
                                                   "type": "string",
                                                   "format": "date"
                                                 },
-                                                "type": {
-                                                  "type": "string",
-                                                  "enum": [
-                                                    "annual",
-                                                    "unpaid",
-                                                    "sick",
-                                                    "excuse",
-                                                    "maternity",
-                                                    "paternity",
-                                                    "compassionate",
-                                                    "holiday"
-                                                  ]
-                                                },
                                                 "year": {
                                                   "type": "string"
                                                 },
@@ -6675,6 +6741,98 @@
                                                                         "type": "object",
                                                                         "properties": {}
                                                                       }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "leave_type": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string"
+                                                            },
+                                                            "label": {
+                                                              "type": "string"
+                                                            },
+                                                            "active": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "increment_amount": {
+                                                              "type": "number",
+                                                              "format": "float"
+                                                            },
+                                                            "increment_type": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "yearly",
+                                                                "monthly",
+                                                                "daily",
+                                                                "none"
+                                                              ]
+                                                            },
+                                                            "unit": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "days",
+                                                                "hours"
+                                                              ]
+                                                            },
+                                                            "carry_over": {
+                                                              "type": "integer"
+                                                            },
+                                                            "createdAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "updatedAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "createdBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "updatedBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
                                                                     }
                                                                   }
                                                                 }
@@ -8158,19 +8316,6 @@
                 "type": "string",
                 "format": "date"
               },
-              "type": {
-                "type": "string",
-                "enum": [
-                  "annual",
-                  "unpaid",
-                  "sick",
-                  "excuse",
-                  "maternity",
-                  "paternity",
-                  "compassionate",
-                  "holiday"
-                ]
-              },
               "year": {
                 "type": "string"
               },
@@ -8201,6 +8346,17 @@
                   ],
                   "example": "string or id"
                 }
+              },
+              "leave_type": {
+                "oneOf": [
+                  {
+                    "type": "integer"
+                  },
+                  {
+                    "type": "string"
+                  }
+                ],
+                "example": "string or id"
               }
             }
           }
@@ -9231,19 +9387,6 @@
                                                   "type": "string",
                                                   "format": "date"
                                                 },
-                                                "type": {
-                                                  "type": "string",
-                                                  "enum": [
-                                                    "annual",
-                                                    "unpaid",
-                                                    "sick",
-                                                    "excuse",
-                                                    "maternity",
-                                                    "paternity",
-                                                    "compassionate",
-                                                    "holiday"
-                                                  ]
-                                                },
                                                 "year": {
                                                   "type": "string"
                                                 },
@@ -9350,6 +9493,98 @@
                                                                         "type": "object",
                                                                         "properties": {}
                                                                       }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "leave_type": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string"
+                                                            },
+                                                            "label": {
+                                                              "type": "string"
+                                                            },
+                                                            "active": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "increment_amount": {
+                                                              "type": "number",
+                                                              "format": "float"
+                                                            },
+                                                            "increment_type": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "yearly",
+                                                                "monthly",
+                                                                "daily",
+                                                                "none"
+                                                              ]
+                                                            },
+                                                            "unit": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "days",
+                                                                "hours"
+                                                              ]
+                                                            },
+                                                            "carry_over": {
+                                                              "type": "integer"
+                                                            },
+                                                            "createdAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "updatedAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "createdBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "updatedBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
                                                                     }
                                                                   }
                                                                 }
@@ -10689,19 +10924,6 @@
             "type": "string",
             "format": "date"
           },
-          "type": {
-            "type": "string",
-            "enum": [
-              "annual",
-              "unpaid",
-              "sick",
-              "excuse",
-              "maternity",
-              "paternity",
-              "compassionate",
-              "holiday"
-            ]
-          },
           "year": {
             "type": "string"
           },
@@ -10740,6 +10962,23 @@
                       "type": "object",
                       "properties": {}
                     }
+                  }
+                }
+              }
+            }
+          },
+          "leave_type": {
+            "type": "object",
+            "properties": {
+              "data": {
+                "type": "object",
+                "properties": {
+                  "id": {
+                    "type": "number"
+                  },
+                  "attributes": {
+                    "type": "object",
+                    "properties": {}
                   }
                 }
               }
@@ -13138,19 +13377,6 @@
                         "type": "string",
                         "format": "date"
                       },
-                      "type": {
-                        "type": "string",
-                        "enum": [
-                          "annual",
-                          "unpaid",
-                          "sick",
-                          "excuse",
-                          "maternity",
-                          "paternity",
-                          "compassionate",
-                          "holiday"
-                        ]
-                      },
                       "year": {
                         "type": "string"
                       },
@@ -13257,6 +13483,98 @@
                                               "type": "object",
                                               "properties": {}
                                             }
+                                          }
+                                        }
+                                      }
+                                    }
+                                  }
+                                }
+                              }
+                            }
+                          }
+                        }
+                      },
+                      "leave_type": {
+                        "type": "object",
+                        "properties": {
+                          "data": {
+                            "type": "object",
+                            "properties": {
+                              "id": {
+                                "type": "number"
+                              },
+                              "attributes": {
+                                "type": "object",
+                                "properties": {
+                                  "type": {
+                                    "type": "string"
+                                  },
+                                  "label": {
+                                    "type": "string"
+                                  },
+                                  "active": {
+                                    "type": "boolean"
+                                  },
+                                  "increment_amount": {
+                                    "type": "number",
+                                    "format": "float"
+                                  },
+                                  "increment_type": {
+                                    "type": "string",
+                                    "enum": [
+                                      "yearly",
+                                      "monthly",
+                                      "daily",
+                                      "none"
+                                    ]
+                                  },
+                                  "unit": {
+                                    "type": "string",
+                                    "enum": [
+                                      "days",
+                                      "hours"
+                                    ]
+                                  },
+                                  "carry_over": {
+                                    "type": "integer"
+                                  },
+                                  "createdAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                  },
+                                  "updatedAt": {
+                                    "type": "string",
+                                    "format": "date-time"
+                                  },
+                                  "createdBy": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "number"
+                                          },
+                                          "attributes": {
+                                            "type": "object",
+                                            "properties": {}
+                                          }
+                                        }
+                                      }
+                                    }
+                                  },
+                                  "updatedBy": {
+                                    "type": "object",
+                                    "properties": {
+                                      "data": {
+                                        "type": "object",
+                                        "properties": {
+                                          "id": {
+                                            "type": "number"
+                                          },
+                                          "attributes": {
+                                            "type": "object",
+                                            "properties": {}
                                           }
                                         }
                                       }
@@ -13407,7 +13725,10 @@
               "type",
               "label",
               "active",
-              "yearly_balance"
+              "increment_amount",
+              "increment_type",
+              "unit",
+              "carry_over"
             ],
             "type": "object",
             "properties": {
@@ -13420,7 +13741,27 @@
               "active": {
                 "type": "boolean"
               },
-              "yearly_balance": {
+              "increment_amount": {
+                "type": "number",
+                "format": "float"
+              },
+              "increment_type": {
+                "type": "string",
+                "enum": [
+                  "yearly",
+                  "monthly",
+                  "daily",
+                  "none"
+                ]
+              },
+              "unit": {
+                "type": "string",
+                "enum": [
+                  "days",
+                  "hours"
+                ]
+              },
+              "carry_over": {
                 "type": "integer"
               }
             }
@@ -13479,7 +13820,10 @@
           "type",
           "label",
           "active",
-          "yearly_balance"
+          "increment_amount",
+          "increment_type",
+          "unit",
+          "carry_over"
         ],
         "properties": {
           "type": {
@@ -13491,7 +13835,27 @@
           "active": {
             "type": "boolean"
           },
-          "yearly_balance": {
+          "increment_amount": {
+            "type": "number",
+            "format": "float"
+          },
+          "increment_type": {
+            "type": "string",
+            "enum": [
+              "yearly",
+              "monthly",
+              "daily",
+              "none"
+            ]
+          },
+          "unit": {
+            "type": "string",
+            "enum": [
+              "days",
+              "hours"
+            ]
+          },
+          "carry_over": {
             "type": "integer"
           },
           "createdAt": {
@@ -15315,19 +15679,6 @@
                                                   "type": "string",
                                                   "format": "date"
                                                 },
-                                                "type": {
-                                                  "type": "string",
-                                                  "enum": [
-                                                    "annual",
-                                                    "unpaid",
-                                                    "sick",
-                                                    "excuse",
-                                                    "maternity",
-                                                    "paternity",
-                                                    "compassionate",
-                                                    "holiday"
-                                                  ]
-                                                },
                                                 "year": {
                                                   "type": "string"
                                                 },
@@ -15434,6 +15785,98 @@
                                                                         "type": "object",
                                                                         "properties": {}
                                                                       }
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            }
+                                                          }
+                                                        }
+                                                      }
+                                                    }
+                                                  }
+                                                },
+                                                "leave_type": {
+                                                  "type": "object",
+                                                  "properties": {
+                                                    "data": {
+                                                      "type": "object",
+                                                      "properties": {
+                                                        "id": {
+                                                          "type": "number"
+                                                        },
+                                                        "attributes": {
+                                                          "type": "object",
+                                                          "properties": {
+                                                            "type": {
+                                                              "type": "string"
+                                                            },
+                                                            "label": {
+                                                              "type": "string"
+                                                            },
+                                                            "active": {
+                                                              "type": "boolean"
+                                                            },
+                                                            "increment_amount": {
+                                                              "type": "number",
+                                                              "format": "float"
+                                                            },
+                                                            "increment_type": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "yearly",
+                                                                "monthly",
+                                                                "daily",
+                                                                "none"
+                                                              ]
+                                                            },
+                                                            "unit": {
+                                                              "type": "string",
+                                                              "enum": [
+                                                                "days",
+                                                                "hours"
+                                                              ]
+                                                            },
+                                                            "carry_over": {
+                                                              "type": "integer"
+                                                            },
+                                                            "createdAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "updatedAt": {
+                                                              "type": "string",
+                                                              "format": "date-time"
+                                                            },
+                                                            "createdBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
+                                                                    }
+                                                                  }
+                                                                }
+                                                              }
+                                                            },
+                                                            "updatedBy": {
+                                                              "type": "object",
+                                                              "properties": {
+                                                                "data": {
+                                                                  "type": "object",
+                                                                  "properties": {
+                                                                    "id": {
+                                                                      "type": "number"
+                                                                    },
+                                                                    "attributes": {
+                                                                      "type": "object",
+                                                                      "properties": {}
                                                                     }
                                                                   }
                                                                 }
