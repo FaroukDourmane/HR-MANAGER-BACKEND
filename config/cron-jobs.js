@@ -1,11 +1,14 @@
+const { incrementMonthlyLeaveBalance } = require("../src/utils/leaves");
+
 module.exports = {
     /**
      * Check Scheduled Messages
      * Runs every 1 minute.
      */
-    // "*/1 * * * *": ({ strapi }) => {
-    //   console.log("CRON JOB RUNNING EVERY 1 MINUTE...");
-    // },
+    "*/1 * * * *": ({ strapi }) => {
+      console.log("CRON JOB RUNNING EVERY 1 MINUTE...");
+      incrementMonthlyLeaveBalance();
+    },
   
     /**
      * Runs on the first day of every month at (8:00 AM).
