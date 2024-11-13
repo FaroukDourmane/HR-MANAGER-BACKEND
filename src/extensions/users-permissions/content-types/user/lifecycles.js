@@ -1,4 +1,4 @@
-const { initiateLeavesBalance } = require("../../../../utils/initiateBalance");
+const { initiateLeavesBalance } = require("../../../../utils/leaves");
 
 module.exports = {
     afterUpdate(event) {
