@@ -21,8 +21,11 @@ module.exports = {
       const leaves = await strapi.entityService.findMany(
         "api::leave-balance.leave-balance",
         {
-          fields: ["id", "type", "balance", "carry_over", "carry_over_expiry"],
+          fields: ["id", "carry_over", "carry_over_expiry"],
           populate: {
+            leave_type: {
+              populate: "*"
+            },
             user: {
               fields: ["id"],
             },
@@ -65,33 +68,38 @@ module.exports = {
       let availableBalance = [];
 
       leaves.map((balance) => {
-        let days = balance?.balance;
+        let main_balance = 0;
+        let remaining_balance = 0;
       
         if ( balance?.leaves ) {
+          console.log("LEAVES: ", balance?.leaves);
           balance.leaves.map((leave) => {
             const fromDate = dayjs(leave.from);
             const toDate = dayjs(leave.to);
             // Calculate the difference in days and add 1 to include both "from" and "to" dates
             const dayDifference = toDate.diff(fromDate, 'day');
             // Subtract the leave days from the balance
-            days -= dayDifference;
+            if ( leave.status == "approved" || leave.status == "pending" ) {
+              remaining_balance -= dayDifference+1;
+            }
           });
         }
 
         if ( balance?.transactions ) {
           balance.transactions.map((transaction) => {
             if ( transaction.transaction_type == "addition" ) {
-              days += transaction.amount;
+              remaining_balance += transaction.amount;
+              main_balance += transaction.amount;
             } else if ( transaction.transaction_type == "deduction" ) {
-              days -= transaction.amount;
+              remaining_balance -= transaction.amount;
             }
           });
         }
       
         availableBalance.push({
-          type: balance.type,
-          main_balance: balance.balance,
-          remaining_balance: days
+          type: balance.leave_type.type,
+          main_balance: main_balance,
+          remaining_balance: remaining_balance
         })
       }, {});
 
@@ -101,5 +109,8 @@ module.exports = {
       ctx.status = err.status || 500;
       ctx.body = { error: err.message || 'Internal server error' };
     }
+  },
+  leaveBalanceTransactions: async (ctx, next) => {
+    
   }
 };

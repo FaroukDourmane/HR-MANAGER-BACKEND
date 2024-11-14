@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-11-13T11:35:40.628Z"
+    "x-generation-date": "2024-11-14T06:30:29.614Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -25,7 +25,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1338/api",
+      "url": "http://localhost:1337/api",
       "description": "Development server"
     }
   ],
@@ -2912,9 +2912,6 @@
                                                       }
                                                     }
                                                   }
-                                                },
-                                                "balance": {
-                                                  "type": "integer"
                                                 },
                                                 "carry_over": {
                                                   "type": "integer"
@@ -6617,9 +6614,6 @@
                                                     }
                                                   }
                                                 },
-                                                "balance": {
-                                                  "type": "integer"
-                                                },
                                                 "carry_over": {
                                                   "type": "integer"
                                                 },
@@ -8280,7 +8274,6 @@
         "properties": {
           "data": {
             "required": [
-              "balance",
               "available_from",
               "expiry_date",
               "year"
@@ -8297,9 +8290,6 @@
                   }
                 ],
                 "example": "string or id"
-              },
-              "balance": {
-                "type": "integer"
               },
               "carry_over": {
                 "type": "integer"
@@ -8411,7 +8401,6 @@
       "LeaveBalance": {
         "type": "object",
         "required": [
-          "balance",
           "available_from",
           "expiry_date",
           "year"
@@ -9368,9 +9357,6 @@
                                                       }
                                                     }
                                                   }
-                                                },
-                                                "balance": {
-                                                  "type": "integer"
                                                 },
                                                 "carry_over": {
                                                   "type": "integer"
@@ -10905,9 +10891,6 @@
                 }
               }
             }
-          },
-          "balance": {
-            "type": "integer"
           },
           "carry_over": {
             "type": "integer"
@@ -13359,9 +13342,6 @@
                           }
                         }
                       },
-                      "balance": {
-                        "type": "integer"
-                      },
                       "carry_over": {
                         "type": "integer"
                       },
@@ -15660,9 +15640,6 @@
                                                       }
                                                     }
                                                   }
-                                                },
-                                                "balance": {
-                                                  "type": "integer"
                                                 },
                                                 "carry_over": {
                                                   "type": "integer"

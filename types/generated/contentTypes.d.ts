@@ -1127,14 +1127,6 @@ export interface ApiLeaveBalanceLeaveBalance extends Schema.CollectionType {
       'manyToOne',
       'plugin::users-permissions.user'
     >;
-    balance: Attribute.Integer &
-      Attribute.Required &
-      Attribute.SetMinMax<
-        {
-          min: 1;
-        },
-        number
-      >;
     carry_over: Attribute.Integer & Attribute.DefaultTo<0>;
     available_from: Attribute.Date & Attribute.Required;
     expiry_date: Attribute.Date & Attribute.Required;

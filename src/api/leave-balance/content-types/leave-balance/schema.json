@@ -18,11 +18,6 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "leave_balances"
     },
-    "balance": {
-      "type": "integer",
-      "required": true,
-      "min": 1
-    },
     "carry_over": {
       "type": "integer",
       "default": 0

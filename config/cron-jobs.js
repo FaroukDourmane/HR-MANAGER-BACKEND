@@ -7,7 +7,7 @@ module.exports = {
      */
     "*/1 * * * *": ({ strapi }) => {
       console.log("CRON JOB RUNNING EVERY 1 MINUTE...");
-      incrementMonthlyLeaveBalance();
+      // incrementMonthlyLeaveBalance();
     },
   
     /**

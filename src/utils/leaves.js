@@ -1,16 +1,19 @@
 'use strict';
 
-const leave = require("../api/leave/controllers/leave");
-
 module.exports = {
     createLeaveBalance: async ({leave, user}) => {
         const currentYear = new Date().getFullYear().toString();
-        const userBalance = await strapi.entityService.findOne("api::leave-balance.leave-balance", {
+        console.log(`CHECKING IF USER ${user.id} HAS BALANCE FOR: `, currentYear);
+        const checkUserBalance = await strapi.entityService.findMany("api::leave-balance.leave-balance", {
             filters: {
                 year: currentYear,
                 user: user.id
-            }
+            },
+            limit: 1
         });
+
+        const userBalance = checkUserBalance[0] || null;
+
         if ( !userBalance ) {
             console.log("CREATING BALANCE...");
             const createdBalance = await strapi.entityService.create("api::leave-balance.leave-balance", {
@@ -21,7 +24,6 @@ module.exports = {
                     expiry_date: new Date(),
                     available_from: new Date(),
                     carry_over_expiry: new Date(),
-                    balance: leave.increment_amount,
                 }
             });
 
@@ -67,10 +69,13 @@ module.exports = {
             }
         });
 
+        console.log(`${leaveTypes.length} LEAVE TYPES FOUND`);
+        console.log(`${eligibleEmployees.length} EMPLOYEES FOUND`);
+
         if ( leaveTypes.length > 0 ) {
             leaveTypes.map((leaveType) => {
                 if ( eligibleEmployees.length > 0 ) {
-                    leaveTypes.map( async(user) => {
+                    eligibleEmployees.map( async(user) => {
                         const balance = await module.exports.createLeaveBalance({
                             leave: leaveType,
                             user: user
