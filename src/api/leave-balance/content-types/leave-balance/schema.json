@@ -18,8 +18,8 @@
       "target": "plugin::users-permissions.user",
       "inversedBy": "leave_balances"
     },
-    "carry_over": {
-      "type": "integer",
+    "carry_over_balance": {
+      "type": "decimal",
       "default": 0
     },
     "available_from": {

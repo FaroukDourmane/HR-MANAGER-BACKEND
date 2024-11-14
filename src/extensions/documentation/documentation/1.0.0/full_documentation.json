@@ -14,7 +14,7 @@
       "name": "Apache 2.0",
       "url": "https://www.apache.org/licenses/LICENSE-2.0.html"
     },
-    "x-generation-date": "2024-11-14T06:30:29.614Z"
+    "x-generation-date": "2024-11-14T09:28:32.209Z"
   },
   "x-strapi-config": {
     "path": "/documentation",
@@ -25,7 +25,7 @@
   },
   "servers": [
     {
-      "url": "http://localhost:1337/api",
+      "url": "http://localhost:1338/api",
       "description": "Development server"
     }
   ],
@@ -2913,8 +2913,9 @@
                                                     }
                                                   }
                                                 },
-                                                "carry_over": {
-                                                  "type": "integer"
+                                                "carry_over_balance": {
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "available_from": {
                                                   "type": "string",
@@ -6614,8 +6615,9 @@
                                                     }
                                                   }
                                                 },
-                                                "carry_over": {
-                                                  "type": "integer"
+                                                "carry_over_balance": {
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "available_from": {
                                                   "type": "string",
@@ -8291,8 +8293,9 @@
                 ],
                 "example": "string or id"
               },
-              "carry_over": {
-                "type": "integer"
+              "carry_over_balance": {
+                "type": "number",
+                "format": "float"
               },
               "available_from": {
                 "type": "string",
@@ -9358,8 +9361,9 @@
                                                     }
                                                   }
                                                 },
-                                                "carry_over": {
-                                                  "type": "integer"
+                                                "carry_over_balance": {
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "available_from": {
                                                   "type": "string",
@@ -10892,8 +10896,9 @@
               }
             }
           },
-          "carry_over": {
-            "type": "integer"
+          "carry_over_balance": {
+            "type": "number",
+            "format": "float"
           },
           "available_from": {
             "type": "string",
@@ -13342,8 +13347,9 @@
                           }
                         }
                       },
-                      "carry_over": {
-                        "type": "integer"
+                      "carry_over_balance": {
+                        "type": "number",
+                        "format": "float"
                       },
                       "available_from": {
                         "type": "string",
@@ -15641,8 +15647,9 @@
                                                     }
                                                   }
                                                 },
-                                                "carry_over": {
-                                                  "type": "integer"
+                                                "carry_over_balance": {
+                                                  "type": "number",
+                                                  "format": "float"
                                                 },
                                                 "available_from": {
                                                   "type": "string",

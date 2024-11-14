@@ -10,7 +10,7 @@ const dayjs = require("dayjs");
 module.exports = {
   leaveBalances: async (ctx, next) => {
     try {
-      // const currentDate = new Date().toISOString();
+      const currentDate = new Date().toISOString();
       const currentYear = new Date().getFullYear().toString();
       const userId = ctx.params.id;  // Retrieve userId from URL parameters
 
@@ -21,7 +21,7 @@ module.exports = {
       const leaves = await strapi.entityService.findMany(
         "api::leave-balance.leave-balance",
         {
-          fields: ["id", "carry_over", "carry_over_expiry"],
+          fields: ["id", "carry_over_balance", "carry_over_expiry"],
           populate: {
             leave_type: {
               populate: "*"
@@ -43,24 +43,24 @@ module.exports = {
             year: {
               $eq: currentYear
             },
-            // available_from: {
-            //   $lte: currentDate,
-            // },
-            // $or: [
-            //   {
-            //     expiry_date: {
-            //       $gt: currentDate,
-            //     },
-            //   },
-            //   {
-            //     carry_over: {
-            //       $gt: 0,
-            //     },
-            //     carry_over_expiry: {
-            //       $gt: currentDate,
-            //     }
-            //   }
-            // ]
+            available_from: {
+              $lte: currentDate,
+            },
+            $or: [
+              {
+                expiry_date: {
+                  $gte: currentDate,
+                },
+              },
+              {
+                carry_over_balance: {
+                  $gt: 0,
+                },
+                carry_over_expiry: {
+                  $gte: currentDate,
+                }
+              }
+            ]
           }
         }
       );
@@ -96,6 +96,10 @@ module.exports = {
           });
         }
       
+        if ( balance?.carry_over_balance > 0 ) {
+          
+        }
+
         availableBalance.push({
           type: balance.leave_type.type,
           main_balance: main_balance,
