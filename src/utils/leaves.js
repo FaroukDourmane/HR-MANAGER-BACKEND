@@ -34,7 +34,7 @@ module.exports = {
         console.log("USER HAS BALANCE: ", userBalance);
         return userBalance;
     },
-    addLeaveTransaction: async ({ balance, comment, amount, type }) => {
+    createLeaveTransaction: async ({ balance, comment, amount, type }) => {
         await strapi.entityService.create("api::leave-transaction.leave-transaction", {
             data: {
                 transaction_type: type,
@@ -46,6 +46,25 @@ module.exports = {
     },
     initiateLeavesBalance: async (user) => {
         // const leaves = await strapi.entityService.create()
+        const leaveTypes = await strapi.entityService.findMany("api::leave-type.leave-type", {
+            filters: {
+                carry_over: {
+                  $neq: "carry_over"
+                },
+                active: {
+                    $eq: true
+                }
+            }
+        });
+
+        if ( leaveTypes.length > 0 ) {
+            leaveTypes.map( async (leaveType) => {
+                const balance = await module.exports.createLeaveBalance({
+                    leave: leaveType,
+                    user: user
+                });
+            })
+        }
     },
     incrementMonthlyLeaveBalance: async () => {
         const currentYear = new Date().getFullYear().toString();
@@ -82,7 +101,7 @@ module.exports = {
                         });
 
                         if ( balance ) {
-                            module.exports.addLeaveTransaction({
+                            module.exports.createLeaveTransaction({
                                 balance: balance?.id,
                                 type: 'addition',
                                 amount: leaveType.increment_amount,

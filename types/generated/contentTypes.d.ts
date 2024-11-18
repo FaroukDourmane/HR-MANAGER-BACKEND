@@ -1243,6 +1243,44 @@ export interface ApiLeaveTypeLeaveType extends Schema.CollectionType {
   };
 }
 
+export interface ApiSettingSetting extends Schema.SingleType {
+  collectionName: 'settings';
+  info: {
+    singularName: 'setting';
+    pluralName: 'settings';
+    displayName: 'setting';
+    description: '';
+  };
+  options: {
+    draftAndPublish: false;
+  };
+  attributes: {
+    advance_payment_allowed: Attribute.Boolean &
+      Attribute.Required &
+      Attribute.DefaultTo<true>;
+    advance_salary_minimum_days: Attribute.Integer &
+      Attribute.Required &
+      Attribute.DefaultTo<1>;
+    leaves_eligibility_months: Attribute.Integer &
+      Attribute.Required &
+      Attribute.DefaultTo<6>;
+    createdAt: Attribute.DateTime;
+    updatedAt: Attribute.DateTime;
+    createdBy: Attribute.Relation<
+      'api::setting.setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+    updatedBy: Attribute.Relation<
+      'api::setting.setting',
+      'oneToOne',
+      'admin::user'
+    > &
+      Attribute.Private;
+  };
+}
+
 export interface ApiShiftShift extends Schema.CollectionType {
   collectionName: 'shifts';
   info: {
@@ -1351,6 +1389,7 @@ declare module '@strapi/types' {
       'api::leave-balance.leave-balance': ApiLeaveBalanceLeaveBalance;
       'api::leave-transaction.leave-transaction': ApiLeaveTransactionLeaveTransaction;
       'api::leave-type.leave-type': ApiLeaveTypeLeaveType;
+      'api::setting.setting': ApiSettingSetting;
       'api::shift.shift': ApiShiftShift;
       'api::transaction.transaction': ApiTransactionTransaction;
     }

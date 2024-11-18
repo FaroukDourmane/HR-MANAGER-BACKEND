@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "settings",
+  "info": {
+    "singularName": "setting",
+    "pluralName": "settings",
+    "displayName": "setting",
+    "description": ""
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {},
+  "attributes": {
+    "advance_payment_allowed": {
+      "type": "boolean",
+      "default": true,
+      "required": true
+    },
+    "advance_salary_minimum_days": {
+      "type": "integer",
+      "required": true,
+      "default": 1
+    },
+    "leaves_eligibility_months": {
+      "type": "integer",
+      "required": true,
+      "default": 6
+    }
+  }
+}
